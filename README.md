@@ -55,7 +55,7 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 App 使用说明：
 
 - **首次启动**会弹出输入框，填写 Invidious 实例地址。
-  - 默认填的是官方实例列表页 `https://invidious.io/instances`，从中挑一个可用的公共实例。
+  - 默认填的是官方实例列表页 `https://instances.invidious.io/`，从中挑一个可用的公共实例。
   - 本地部署后填 `http://<电脑局域网IP>:3000`。
 - 在页面**任意位置长按**可随时修改实例地址。
 - **返回键**在网页历史内回退（不会直接退出 App）。
@@ -102,9 +102,9 @@ docker compose up -d
 | 项目 | 值 |
 | --- | --- |
 | 路径 | `releases/invidious-webview-v1.0-debug.apk` |
-| 字节数 | 9369 |
-| SHA256 | `c719a8e652df7a0531f1b8325cec0973ad95537fe53812c62180f0354923d0d0` |
-| MD5 | `2aba9d1f26040c101ef01065539d877e` |
+| 字节数 | 12673 |
+| SHA256 | `e51698fc1d71fb188dac576bb345bd568cea5b13c1c3d8148630bc2161ba0958` |
+| MD5 | `31bf585ef527dce4fefc6985767a2894` |
 | 测试机 | OnePlus PLK110（`3B15AP02BZD00000`） |
 | 结果 | `adb install -r` 成功，Activity 启动未崩溃 |
 
@@ -118,6 +118,6 @@ adb install -r releases/invidious-webview-v1.0-debug.apk
 
 首次打开会让你填写 Invidious 实例地址：
 
-- 公共实例：从 `https://invidious.io/instances` 挑一个能用的（默认就填的这个列表页）；
+- 公共实例：从 `https://instances.invidious.io/` 挑一个能用的（默认就填的这个列表页）；
 - 本地部署：填 `http://<电脑局域网IP>:3000`。
 - 在页面任意位置**长按**可随时改地址。

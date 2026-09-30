@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
     private static final String PREFS = "invidious_prefs";
     private static final String KEY_URL = "instance_url";
     // 默认指向 Invidious 官方「可用公共实例列表」，用户在列表里挑一个活的实例即可。
-    private static final String DEFAULT_URL = "https://invidious.io/instances";
+    private static final String DEFAULT_URL = "https://instances.invidious.io/";
 
     private WebView webView;
 
@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Invidious 实例地址");
-        builder.setMessage("填写 Invidious 服务端地址。\n公共实例：从 https://invidious.io/instances 选一个；\n本地部署：http://电脑局域网IP:3000");
+        builder.setMessage("填写 Invidious 服务端地址。\n公共实例：从 https://instances.invidious.io/ 选一个；\n本地部署：http://电脑局域网IP:3000");
         builder.setView(wrap);
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override

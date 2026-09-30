@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 基于设备默认无操作栏主题；把状态栏/导航栏刷成与顶部栏一致的深色，
+         配合布局根的 fitsSystemWindows，避免自定义顶部栏与系统状态栏重叠 -->
+    <style name="AppTheme" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:statusBarColor">#16181d</item>
+        <item name="android:navigationBarColor">#0f1115</item>
+    </style>
+</resources>

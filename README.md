@@ -112,8 +112,8 @@ docker compose up -d
 | --- | --- |
 | 路径 | `releases/invidious-webview-v1.0-debug.apk` |
 | 字节数 | 14451 |
-| SHA256 | `92f1f2164dd7fcb1fef32a7e983b690bbd00e42b2b083dac7cd5e74b42b98686` |
-| MD5 | `601b1a52487834613a7244fae7fcb264` |
+| SHA256 | `c87771b69f35374d46c788991ac1a374e5fb6ae1a34ca8af8ab3e20240535f2c` |
+| MD5 | `44eca27ba9f2eb0f3111b9bbabf1e1ab` |
 | 测试机 | OnePlus PLK110（`3B15AP02BZD00000`） |
 | 结果 | `adb install -r` 成功，Activity 启动未崩溃 |
 

@@ -94,3 +94,30 @@ docker compose up -d
 - 不涉及对 Invidious 上游源码的改动（上游以容器镜像形式引用）。
 
 如需把 Invidious 上游源码也纳入版本管理，可 `git submodule add https://github.com/iv-org/invidious upstream` 并在 compose 里改用 `build: .`。
+
+---
+
+## 6. 已构建 APK（装机测试通过）
+
+| 项目 | 值 |
+| --- | --- |
+| 路径 | `releases/invidious-webview-v1.0-debug.apk` |
+| 字节数 | 9369 |
+| SHA256 | `c719a8e652df7a0531f1b8325cec0973ad95537fe53812c62180f0354923d0d0` |
+| MD5 | `2aba9d1f26040c101ef01065539d877e` |
+| 测试机 | OnePlus PLK110（`3B15AP02BZD00000`） |
+| 结果 | `adb install -r` 成功，Activity 启动未崩溃 |
+
+> 这是一个纯 WebView 壳（系统自带 WebView，不打包原生库），所以 APK 体积很小属正常。
+
+安装到手机：
+
+```bash
+adb install -r releases/invidious-webview-v1.0-debug.apk
+```
+
+首次打开会让你填写 Invidious 实例地址：
+
+- 公共实例：从 `https://invidious.io/instances` 挑一个能用的（默认就填的这个列表页）；
+- 本地部署：填 `http://<电脑局域网IP>:3000`。
+- 在页面任意位置**长按**可随时改地址。

@@ -54,12 +54,21 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 App 使用说明：
 
+- **顶部操作栏**（深色）：左侧标题，右侧四个按钮——
+  - 「实例」：修改 Invidious 实例地址（等同长按页面）；
+  - 「←」「→」：网页历史后退 / 前进；
+  - 「刷新」：重新加载当前实例。
+- **加载进度条**：顶部栏下方细条，页面加载时显示进度。
+- **错误提示面板**：加载失败或实例返回 404/5xx 时，不再显示空白页，而是给出错误码 + 「重试 / 更换实例」按钮（仅主帧错误才提示，子资源 404 不误报）。
 - **首次启动**会弹出输入框，填写 Invidious 实例地址。
   - 默认填的是官方实例列表页 `https://instances.invidious.io/`，从中挑一个可用的公共实例。
   - 本地部署后填 `http://<电脑局域网IP>:3000`。
-- 在页面**任意位置长按**可随时修改实例地址。
 - **返回键**在网页历史内回退（不会直接退出 App）。
 - 已开启 `usesCleartextTraffic`，所以 `http://` 的本地实例也能直接访问。
+
+界面截图（真机 PLK110 实拍）：
+
+![主界面](screenshot-main.png)
 
 > 注意：公共实例能否访问取决于**手机自身的网络**。若公共实例连不上，优先用本地部署方案（见下）。
 
@@ -102,9 +111,9 @@ docker compose up -d
 | 项目 | 值 |
 | --- | --- |
 | 路径 | `releases/invidious-webview-v1.0-debug.apk` |
-| 字节数 | 12673 |
-| SHA256 | `e51698fc1d71fb188dac576bb345bd568cea5b13c1c3d8148630bc2161ba0958` |
-| MD5 | `31bf585ef527dce4fefc6985767a2894` |
+| 字节数 | 14451 |
+| SHA256 | `92f1f2164dd7fcb1fef32a7e983b690bbd00e42b2b083dac7cd5e74b42b98686` |
+| MD5 | `601b1a52487834613a7244fae7fcb264` |
 | 测试机 | OnePlus PLK110（`3B15AP02BZD00000`） |
 | 结果 | `adb install -r` 成功，Activity 启动未崩溃 |
 

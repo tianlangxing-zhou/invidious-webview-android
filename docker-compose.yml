@@ -1,0 +1,64 @@
+# Invidious 本地部署（官方 docker-compose）
+#
+# 前置：已安装 Docker Desktop（Windows 需 WSL2 后端或 Hyper-V 后端）。
+# 启动：  docker compose up -d
+# 停止：  docker compose down
+# 日志：  docker compose logs -f invidious
+# 访问：  http://localhost:3000
+# 手机：  同一 WiFi 下填 http://<本机局域网IP>:3000 （在 App 里长按页面即可修改）
+#
+# 说明：
+#  - 镜像默认用官方 quay.io/invidious/invidious:latest
+#  - 如需从源码构建，把 invidious 服务的 `image:` 换成 `build: .` 并放开上下文
+#  - postgres 数据持久化在命名卷 postgresdb 中
+
+version: "3.8"
+
+services:
+  invidious:
+    image: quay.io/invidious/invidious:latest
+    # 想从源码构建时改为下面两行（需把本仓库的 Invidious 源码放到同目录）：
+    # build: .
+    container_name: invidious
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      # Invidious 主配置（YAML 多行字符串）
+      INVIDIOUS_CONFIG: |
+        db:
+          dbname: invidious
+          user: kemal
+          password: kemal
+          host: invidious-db
+          port: 5432
+        check_tables: true
+        # 取消注释可关闭开放注册（仅自己用）：
+        # registration_enabled: false
+    depends_on:
+      invidious-db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/v1/top"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+  invidious-db:
+    image: postgres:16
+    container_name: invidious-db
+    restart: unless-stopped
+    volumes:
+      - postgresdb:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: kemal
+      POSTGRES_PASSWORD: kemal
+      POSTGRES_DB: invidious
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kemal"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgresdb:
